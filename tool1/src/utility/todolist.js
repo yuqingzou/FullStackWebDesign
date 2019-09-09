@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOm from 'react-dom'
 import Todoitem from './todoitem'
-// import exmapletododate from './exmapletododate.js'
+// import Exmapletododate from './exmapletododate.js'
 
 class Todolist extends React.Component  {
     constructor(){

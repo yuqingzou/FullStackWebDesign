@@ -1,4 +1,4 @@
-const exmapletododate = [
+const Exmapletododate = [
     {
         id: 1,
         text: "Take out the trash",
@@ -26,4 +26,4 @@ const exmapletododate = [
     }
 ]
 
-export default exmapletododate
+export default Exmapletododate
