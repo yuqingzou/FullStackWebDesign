@@ -30,9 +30,10 @@ function Todoitem(props){
             <input 
                 type="checkbox" 
                 checked={props.content.completed} 
-                onChange={() => console.log("Changed!")}
+                onChange={() => props.clickChange(props.content.id)}
             />
-            <p>{props.content}</p>
+            <p>This is No.{props.content.id} {props.content.text}</p>
+
         </div>
     )
 }

@@ -40,15 +40,26 @@ class Todolist extends React.Component  {
     }
 
     clickChange(id){
-        console.log(id+'has been clicked')
+        this.setState(
+            prevSate => {
+                const updated = this.state.tododata.map(item =>{
+                    if (item.id === id){
+                        item.completed = !item.completed
+                    }
+                    return item
+                })
+                //in here need return a state which should be a js object
+                return{
+                    tododata:updated
+                }
+            })
     }
 
     render(){
-        const todoitems = this.state.tododata.map(items=><Todoitem key={items.id} content={items.text}/>)
+        const todoitems = this.state.tododata.map(items=><Todoitem key={items.id} content={items} clickChange={this.clickChange}/>)
         return(
             <div className="todoList">
-                {todoitems}
-                
+                {todoitems}                
             </div>
         )
     }
