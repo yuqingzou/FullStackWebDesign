@@ -7,7 +7,8 @@ class RegisterForm extends React.Component {
             firstname:"",
             lastname:"",
             agreed: false,
-            leftMessage:""
+            leftMessage:"",
+            chooseColor:""
         }
         this.handleChange = this.handleChange.bind(this)
     }
@@ -72,8 +73,19 @@ class RegisterForm extends React.Component {
                         onChange = {this.handleChange}
                     />FEMALE
                 </label>
-                
-                
+                <br/>
+                <label>Choose Your Theme Color</label>
+                <select 
+                    value={this.state.chooseColor}
+                    name = "chooseColor"
+                    onChange = {this.handleChange}
+                >
+                    <option value="black">black</option>                    
+                    <option value="red">red</option>
+                    <option value="blue">blue</option>
+                    <option value="green">green</option>
+                </select>
+                <h3 style={{color:this.state.chooseColor}}>The Color preview</h3>
             </form>
         )
     }
