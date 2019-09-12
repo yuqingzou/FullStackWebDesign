@@ -1,7 +1,8 @@
 import React from 'react';
 // import './App.css';
 import Todolist from './utility/todolist';
-import RegisterForm from './utility/registerform'
+import RegisterForm from './utility/registerform';
+import MemeGenerator from './utility/MemeGenerator'
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <Todolist/>
       <br/>
       <RegisterForm/>
+      <br/>
+      <MemeGenerator/>
     </div>
   );
 }
