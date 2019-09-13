@@ -8,7 +8,8 @@ class MemeGenerator extends React.Component {
             topText: "",
             bottomText: "",
             randomImg: "",
-            allMemeImgs: []
+            allMemeImgs: [],
+            uploadfile: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -24,8 +25,8 @@ class MemeGenerator extends React.Component {
     }
     
     handleChange(event) {
-        const {name, value} = event.target
-        this.setState({ [name]: value })
+        const {name, value, type,files} = event.target
+        type==="file"? this.setState({randMemeImg:URL.createObjectURL(files[0])}) : this.setState({ [name]: value })
     }
     
     handleSubmit(event) {
@@ -54,6 +55,7 @@ class MemeGenerator extends React.Component {
                         value={this.state.bottomText}
                         onChange={this.handleChange}
                     /> 
+                    <input type="file" onChange={this.handleChange}/>
                 
                     <button>Gen</button>
                 </form>
