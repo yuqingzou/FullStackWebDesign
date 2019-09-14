@@ -29,6 +29,7 @@ class MemeGenerator extends React.Component {
         type==="file"?  this.setState({randomImg: URL.createObjectURL(files[0])})
                         : 
                         this.setState({ [name]: value })
+        //this is not works
         URL.revokeObjectURL(this.state.randomImg)
     }
     
