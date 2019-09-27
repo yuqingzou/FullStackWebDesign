@@ -12,6 +12,7 @@ class Todolist extends React.Component  {
     }
 
     clickChange(id){
+        
         this.setState(
             prevSate => {
                 const updated = this.state.tododata.map(item =>{
@@ -25,6 +26,12 @@ class Todolist extends React.Component  {
                     tododata:updated
                 }
             })
+
+        const action ={
+            type : 'change_input_value',
+            value: this.state
+        }
+        store.dispatch(action);    
     }
 
     render(){
