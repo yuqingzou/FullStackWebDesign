@@ -32,12 +32,36 @@ class Todolist extends React.Component {
   handleChange() {
     this.setState(store.getState());
   }
+  clickAddNewEvent() {
+    const action = {
+      type: "click_add_event",
+      value: this.state.inputNewEvent
+    };
+    store.dispatch(action);
+  }
 
   render() {
     const todoitems = this.state.tododata.map(items => (
       <Todoitem key={items.id} content={items} clickChange={this.clickChange} />
     ));
-    return <div className="todoList">{todoitems}</div>;
+    return (
+      <div>
+        >
+        <form>
+          <label>
+            Add Event:
+            <input
+              type="text"
+              name="name"
+              placeholder={this.state.inputNewEvent}
+              onChange={this.clickAddNewEvent}
+            />
+          </label>
+          <input type="submit" value="Add" />
+        </form>
+        <div className="todoList">{todoitems}</div>
+      </div>
+    );
   }
 }
 
