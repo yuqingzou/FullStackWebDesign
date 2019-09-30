@@ -1,5 +1,5 @@
 const defaultState = {
-  inputNewEvent: "Let's do some thing",
+  inputNewEvent: "",
   tododata: [
     {
       id: 1,
@@ -35,14 +35,21 @@ export default (state = defaultState, action) => {
     const newState = JSON.parse(JSON.stringify(state));
     newState.tododata = action.value;
     return newState;
+  } else if (action.type === "input_event") {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.inputNewEvent = action.value;
+    return newState;
   } else if (action.type === "click_add_event") {
     const newState = JSON.parse(JSON.stringify(state));
     const newEventItem = {
-      id: 6,
-      text: action.value,
+      id: newState.tododata.length + 1,
+      text: newState.inputNewEvent,
       completed: false
     };
+    //reset all things
     newState.tododata.push(newEventItem);
+    newState.inputNewEvent = "";
+    return newState;
   }
   //return default !!!!
   return state;

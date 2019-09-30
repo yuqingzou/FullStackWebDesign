@@ -7,10 +7,11 @@ class Todolist extends React.Component {
   constructor() {
     super();
     this.state = store.getState();
-    console.log(this.state);
     //all function that need change state need be in here
     this.clickChange = this.clickChange.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.inputEventUpdate = this.inputEventUpdate.bind(this);
+    this.clickAddNewEvent = this.clickAddNewEvent.bind(this);
     store.subscribe(this.handleChange);
   }
 
@@ -32,10 +33,19 @@ class Todolist extends React.Component {
   handleChange() {
     this.setState(store.getState());
   }
-  clickAddNewEvent() {
+
+  clickAddNewEvent(event) {
+    event.preventDefault();
     const action = {
-      type: "click_add_event",
-      value: this.state.inputNewEvent
+      type: "click_add_event"
+    };
+    store.dispatch(action);
+  }
+
+  inputEventUpdate(event) {
+    const action = {
+      type: "input_event",
+      value: event.target.value
     };
     store.dispatch(action);
   }
@@ -53,11 +63,12 @@ class Todolist extends React.Component {
             <input
               type="text"
               name="name"
-              placeholder={this.state.inputNewEvent}
-              onChange={this.clickAddNewEvent}
+              value={this.state.inputNewEvent}
+              placeholder={"let's do someting today"}
+              onChange={this.inputEventUpdate}
             />
           </label>
-          <input type="submit" value="Add" />
+          <button onClick={this.clickAddNewEvent}>ADD</button>
         </form>
         <div className="todoList">{todoitems}</div>
       </div>
