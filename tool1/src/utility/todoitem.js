@@ -1,4 +1,5 @@
 import React from "react";
+import store from "../store";
 
 class Todoitem extends React.Component {
   constructor() {
@@ -6,6 +7,14 @@ class Todoitem extends React.Component {
     this.state = {
       isSelected: false
     };
+  }
+
+  deleteEvent(id) {
+    const action = {
+      type: "delete_event_by_id",
+      value: "id"
+    };
+    store.dispatch(action);
   }
 
   render() {
@@ -26,7 +35,10 @@ class Todoitem extends React.Component {
         />
         {/* <remind:1.inline style are already in js dont need {} 2. js syule = need be a object no predefine then{{color:"red"}}> */}
         <p style={this.props.content.completed ? donesytle : null}>
-          This is No.{this.props.content.id} {this.props.content.text}
+          This is No.{this.props.content.id} {this.props.content.text}{" "}
+          <button onClick={() => this.deleteEvent(this.props.content.id)}>
+            remove
+          </button>
         </p>
       </div>
     );

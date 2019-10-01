@@ -50,6 +50,10 @@ export default (state = defaultState, action) => {
     newState.tododata.push(newEventItem);
     newState.inputNewEvent = "";
     return newState;
+  } else if (action.type === "delete_event_by_id") {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.tododata.splice(action.value, 1);
+    return newState;
   }
   //return default !!!!
   return state;
