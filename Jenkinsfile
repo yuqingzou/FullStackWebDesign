@@ -1,14 +1,10 @@
-node {
-
-    stage('Git') {
-        git 'https://github.com/Orbiseed/orbiseed-backend.git'
+pipeline {
+    agent { docker { image 'node:6.3' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'npm --version'
+            }
+        }
     }
-    stage('Build') {
-        sh 'npm install'
-    }
-    stage('Test') {
-        sh 'npm run test'
-    }
-
 }
-© 2019 GitH
